@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { ChatBot as ChatBotIcon, Heart } from "lucide-react";
+import { MessageCircle, Heart } from "lucide-react";
 
 interface Message {
   id: number;
@@ -111,7 +111,7 @@ const ChatBot = () => {
       <Card className="h-96">
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
-            <ChatBotIcon className="w-5 h-5 text-blue-500" />
+            <MessageCircle className="w-5 h-5 text-blue-500" />
             <span>상담 채팅</span>
           </CardTitle>
         </CardHeader>

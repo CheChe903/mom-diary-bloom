@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Heart, Calendar, Image, Baby, ChatBot, Users } from "lucide-react";
+import { Heart, Calendar, Image, Baby, Bot, Users } from "lucide-react";
 import DailyDiary from "@/components/DailyDiary";
 import PhotoGallery from "@/components/PhotoGallery";
 import AppointmentManager from "@/components/AppointmentManager";
@@ -114,7 +114,7 @@ const Index = () => {
                 className="h-16 bg-purple-500 hover:bg-purple-600 text-white"
               >
                 <div className="text-center">
-                  <ChatBot className="w-6 h-6 mx-auto mb-1" />
+                  <Bot className="w-6 h-6 mx-auto mb-1" />
                   <div>AI 상담</div>
                 </div>
               </Button>
@@ -173,7 +173,7 @@ const Index = () => {
             onClick={() => setActiveTab('chatbot')}
             className="flex-col h-12 px-3"
           >
-            <ChatBot className="w-4 h-4 mb-1" />
+            <Bot className="w-4 h-4 mb-1" />
             <span className="text-xs">AI상담</span>
           </Button>
           <Button
