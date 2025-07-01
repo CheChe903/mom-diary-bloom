@@ -10,6 +10,7 @@ import WeeklyTips from "@/components/WeeklyTips";
 import ChatBot from "@/components/ChatBot";
 import Community from "@/components/Community";
 import SignatureCharacter from "@/components/SignatureCharacter";
+import PregnancyProgress from "@/components/PregnancyProgress";
 
 const Index = () => {
   const [currentWeek] = useState(28);
@@ -59,36 +60,39 @@ const Index = () => {
               </div>
             </div>
 
+            {/* Pregnancy Progress */}
+            <PregnancyProgress currentWeek={currentWeek} currentDay={currentDay} />
+
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <Card className="text-center p-4">
+              <Card className="text-center p-4 bg-gradient-to-br from-pink-50 to-pink-100">
                 <CardContent className="p-2">
                   <div className="text-2xl font-bold text-pink-600">{currentWeek}주 {currentDay}일</div>
                   <div className="text-sm text-gray-600">현재 주차</div>
                 </CardContent>
               </Card>
-              <Card className="text-center p-4">
+              <Card className="text-center p-4 bg-gradient-to-br from-purple-50 to-purple-100">
                 <CardContent className="p-2">
-                  <div className="text-2xl font-bold text-purple-600">12</div>
+                  <div className="text-2xl font-bold text-purple-600">15</div>
                   <div className="text-sm text-gray-600">일기 작성</div>
                 </CardContent>
               </Card>
-              <Card className="text-center p-4">
+              <Card className="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100">
                 <CardContent className="p-2">
-                  <div className="text-2xl font-bold text-blue-600">8</div>
+                  <div className="text-2xl font-bold text-blue-600">12</div>
                   <div className="text-sm text-gray-600">주수 사진</div>
                 </CardContent>
               </Card>
-              <Card className="text-center p-4">
+              <Card className="text-center p-4 bg-gradient-to-br from-green-50 to-green-100">
                 <CardContent className="p-2">
-                  <div className="text-2xl font-bold text-green-600">3</div>
+                  <div className="text-2xl font-bold text-green-600">2</div>
                   <div className="text-sm text-gray-600">다음 진료</div>
                 </CardContent>
               </Card>
             </div>
 
             {/* Today's Summary */}
-            <Card>
+            <Card className="border-l-4 border-l-pink-400">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Heart className="w-5 h-5 text-pink-500" />
@@ -97,9 +101,12 @@ const Index = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <span className="text-gray-600">체중</span>
-                    <span className="font-medium">65.2kg (+12kg)</span>
+                    <div className="text-right">
+                      <span className="font-medium">65.2kg</span>
+                      <span className="text-sm text-green-600 ml-2">(+12kg)</span>
+                    </div>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">체온</span>
@@ -107,8 +114,39 @@ const Index = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">기분</span>
-                    <span className="font-medium">😊 좋음</span>
+                    <span className="font-medium">😊 행복해요</span>
                   </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">에너지</span>
+                    <span className="font-medium">7/10</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">수분 섭취</span>
+                    <span className="font-medium">6잔</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Weekly Highlight */}
+            <Card className="bg-gradient-to-r from-purple-100 to-pink-100">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <Baby className="w-5 h-5 text-purple-500" />
+                  <span>이번 주 하이라이트</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2">
+                  <p className="text-sm text-gray-700">
+                    🎉 <strong>28주차</strong>에 접어들면서 아기의 뇌가 급속히 발달하고 있어요!
+                  </p>
+                  <p className="text-sm text-gray-700">
+                    👁️ 이제 아기가 눈을 뜨고 감을 수 있고, 꿈도 꿀 수 있답니다.
+                  </p>
+                  <p className="text-sm text-purple-700 font-medium">
+                    💡 3분기가 시작되었어요. 출산 준비를 본격적으로 시작해보세요!
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -117,23 +155,39 @@ const Index = () => {
             <div className="grid grid-cols-2 gap-4">
               <Button 
                 onClick={() => setActiveTab('diary')} 
-                className="h-16 bg-pink-500 hover:bg-pink-600 text-white"
+                className="h-20 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white shadow-lg"
               >
                 <div className="text-center">
-                  <Heart className="w-6 h-6 mx-auto mb-1" />
-                  <div>일기 쓰기</div>
+                  <Heart className="w-8 h-8 mx-auto mb-2" />
+                  <div className="text-lg font-medium">일기 쓰기</div>
+                  <div className="text-xs opacity-90">오늘의 기분과 상태 기록</div>
                 </div>
               </Button>
               <Button 
                 onClick={() => setActiveTab('chatbot')} 
-                className="h-16 bg-purple-500 hover:bg-purple-600 text-white"
+                className="h-20 bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white shadow-lg"
               >
                 <div className="text-center">
-                  <Bot className="w-6 h-6 mx-auto mb-1" />
-                  <div>AI 상담</div>
+                  <Bot className="w-8 h-8 mx-auto mb-2" />
+                  <div className="text-lg font-medium">AI 상담</div>
+                  <div className="text-xs opacity-90">궁금한 점을 물어보세요</div>
                 </div>
               </Button>
             </div>
+
+            {/* Motivational Quote */}
+            <Card className="bg-gradient-to-r from-yellow-100 to-orange-100 border-l-4 border-l-yellow-400">
+              <CardContent className="p-4">
+                <div className="text-center">
+                  <p className="text-lg font-medium text-gray-800 mb-2">
+                    "모든 아기는 엄마 배 속에서 기적을 만들어가고 있어요"
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    오늘도 소중한 하루를 함께 만들어가요 💝
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         );
     }
