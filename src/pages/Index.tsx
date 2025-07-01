@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -14,6 +13,7 @@ import SignatureCharacter from "@/components/SignatureCharacter";
 
 const Index = () => {
   const [currentWeek] = useState(28);
+  const [currentDay] = useState(3);
   const [activeTab, setActiveTab] = useState('home');
 
   const getCharacterMessage = () => {
@@ -36,7 +36,7 @@ const Index = () => {
       case 'appointments':
         return <AppointmentManager />;
       case 'tips':
-        return <WeeklyTips currentWeek={currentWeek} />;
+        return <WeeklyTips currentWeek={currentWeek} currentDay={currentDay} />;
       case 'chatbot':
         return <ChatBot />;
       case 'community':
@@ -53,7 +53,7 @@ const Index = () => {
               <p className="text-gray-600">당신과 아기를 위한 스마트 산모수첩</p>
               <div className="mt-4 flex items-center justify-center space-x-2">
                 <Badge variant="secondary" className="bg-pink-200 text-pink-800">
-                  임신 {currentWeek}주차
+                  임신 {currentWeek}주 {currentDay}일차
                 </Badge>
                 <Heart className="w-5 h-5 text-pink-500 fill-pink-500" />
               </div>
@@ -63,8 +63,8 @@ const Index = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <Card className="text-center p-4">
                 <CardContent className="p-2">
-                  <div className="text-2xl font-bold text-pink-600">28</div>
-                  <div className="text-sm text-gray-600">주차</div>
+                  <div className="text-2xl font-bold text-pink-600">{currentWeek}주 {currentDay}일</div>
+                  <div className="text-sm text-gray-600">현재 주차</div>
                 </CardContent>
               </Card>
               <Card className="text-center p-4">
@@ -141,14 +141,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50">
-      {/* Main Content */}
       <div className="pb-20">
         <div className="container mx-auto px-4 py-6">
           {renderContent()}
         </div>
       </div>
 
-      {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2">
         <div className="flex justify-around">
           <Button

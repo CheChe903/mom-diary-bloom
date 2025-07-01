@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,9 +5,10 @@ import { Baby, Heart } from "lucide-react";
 
 interface WeeklyTipsProps {
   currentWeek: number;
+  currentDay?: number;
 }
 
-const WeeklyTips = ({ currentWeek }: WeeklyTipsProps) => {
+const WeeklyTips = ({ currentWeek, currentDay = 0 }: WeeklyTipsProps) => {
   const weeklyInfo = {
     28: {
       babySize: "가지 크기",
@@ -32,7 +32,7 @@ const WeeklyTips = ({ currentWeek }: WeeklyTipsProps) => {
         <h2 className="text-2xl font-bold text-gray-800 mb-2">주수별 정보</h2>
         <p className="text-gray-600">현재 주수에 맞는 정보를 확인하세요</p>
         <Badge className="mt-2 bg-purple-100 text-purple-800">
-          임신 {currentWeek}주차
+          임신 {currentWeek}주 {currentDay}일차
         </Badge>
       </div>
 
