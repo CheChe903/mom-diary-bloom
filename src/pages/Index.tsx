@@ -10,10 +10,22 @@ import AppointmentManager from "@/components/AppointmentManager";
 import WeeklyTips from "@/components/WeeklyTips";
 import ChatBot from "@/components/ChatBot";
 import Community from "@/components/Community";
+import SignatureCharacter from "@/components/SignatureCharacter";
 
 const Index = () => {
+  const [currentWeek] = useState(28);
   const [activeTab, setActiveTab] = useState('home');
-  const [currentWeek] = useState(28); // Mock current pregnancy week
+
+  const getCharacterMessage = () => {
+    const messages = [
+      "오늘도 건강한 하루 보내세요! 💕",
+      "아기와 함께하는 소중한 시간이에요 🤱",
+      "궁금한 것이 있으면 언제든 물어보세요! 😊",
+      "오늘의 컨디션은 어떠신가요?",
+      "매일매일이 소중한 기록이 될 거예요 ✨"
+    ];
+    return messages[Math.floor(Math.random() * messages.length)];
+  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -32,8 +44,11 @@ const Index = () => {
       default:
         return (
           <div className="space-y-6">
-            {/* Header */}
+            {/* Header with Character */}
             <div className="text-center py-8 bg-gradient-to-r from-pink-100 to-purple-100 rounded-xl">
+              <div className="mb-4">
+                <SignatureCharacter message={getCharacterMessage()} size="lg" />
+              </div>
               <h1 className="text-3xl font-bold text-gray-800 mb-2">마미케어</h1>
               <p className="text-gray-600">당신과 아기를 위한 스마트 산모수첩</p>
               <div className="mt-4 flex items-center justify-center space-x-2">

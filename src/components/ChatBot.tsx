@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { MessageCircle, Heart } from "lucide-react";
+import SignatureCharacter from "./SignatureCharacter";
 
 interface Message {
   id: number;
@@ -78,7 +79,11 @@ const ChatBot = () => {
   return (
     <div className="space-y-6">
       <div className="text-center py-4">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">AI 상담</h2>
+        <SignatureCharacter 
+          message="궁금한 것이 있으시면 언제든 말씀해주세요! 도와드릴게요 😊" 
+          size="md" 
+        />
+        <h2 className="text-2xl font-bold text-gray-800 mb-2 mt-4">AI 상담</h2>
         <p className="text-gray-600">궁금한 점을 언제든 물어보세요</p>
         <Badge className="mt-2 bg-blue-100 text-blue-800">
           24시간 상담 가능
