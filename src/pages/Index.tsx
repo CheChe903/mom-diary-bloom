@@ -11,6 +11,9 @@ import ChatBot from "@/components/ChatBot";
 import Community from "@/components/Community";
 import SignatureCharacter from "@/components/SignatureCharacter";
 import PregnancyProgress from "@/components/PregnancyProgress";
+import MedicalAccess from "@/components/MedicalAccess";
+import DoctorDashboard from "@/components/DoctorDashboard";
+import NurseUpload from "@/components/NurseUpload";
 
 const Index = () => {
   const [currentWeek] = useState(28);
@@ -42,6 +45,12 @@ const Index = () => {
         return <ChatBot />;
       case 'community':
         return <Community />;
+      case 'medical-access':
+        return <MedicalAccess />;
+      case 'doctor':
+        return <DoctorDashboard />;
+      case 'nurse':
+        return <NurseUpload />;
       default:
         return (
           <div className="space-y-6">
@@ -62,6 +71,25 @@ const Index = () => {
 
             {/* Pregnancy Progress */}
             <PregnancyProgress currentWeek={currentWeek} currentDay={currentDay} />
+
+            {/* Medical Access Quick Link */}
+            <Card className="border-l-4 border-l-blue-400 bg-gradient-to-r from-blue-50 to-purple-50">
+              <CardContent className="p-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="font-semibold text-gray-800 mb-1">의료진과 연결하기</h3>
+                    <p className="text-sm text-gray-600">담당 의료진이 내 기록을 확인할 수 있도록 설정하세요</p>
+                  </div>
+                  <Button 
+                    onClick={() => setActiveTab('medical-access')}
+                    variant="outline"
+                    className="border-blue-300 text-blue-700"
+                  >
+                    설정하기
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
 
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -174,6 +202,32 @@ const Index = () => {
                 </div>
               </Button>
             </div>
+
+            {/* Medical Professional Access */}
+            <Card className="bg-gradient-to-r from-blue-100 to-cyan-100">
+              <CardContent className="p-4">
+                <div className="text-center space-y-3">
+                  <h3 className="text-lg font-semibold text-gray-800">의료진이신가요?</h3>
+                  <p className="text-sm text-gray-600">환자의 증상 기록을 확인하거나 검사 결과를 업로드하세요</p>
+                  <div className="flex justify-center space-x-3">
+                    <Button 
+                      onClick={() => setActiveTab('doctor')}
+                      variant="outline"
+                      className="border-blue-300 text-blue-700"
+                    >
+                      의사 로그인
+                    </Button>
+                    <Button 
+                      onClick={() => setActiveTab('nurse')}
+                      variant="outline"
+                      className="border-cyan-300 text-cyan-700"
+                    >
+                      간호사 로그인
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
             {/* Motivational Quote */}
             <Card className="bg-gradient-to-r from-yellow-100 to-orange-100 border-l-4 border-l-yellow-400">
